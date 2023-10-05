@@ -45,7 +45,7 @@ export class Loader {
       if (rowMeta === undefined) {
         this.results.set(id, { cells: cells as string[], containers: fileID });
       } else {
-        rowMeta.containers += fileID;
+        rowMeta.containers |= fileID;
       }
     }
     this.checsumAllFilesContain += fileID;
