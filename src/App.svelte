@@ -1,13 +1,11 @@
 <script lang="ts">
   import '@picocss/pico'
-  import Counter from './lib/Counter.svelte'
+  import FileSelect from './lib/FileSelect.svelte';
 </script>
 
 <main>
-  <h1>Vite + Svelte</h1>
-  <div class="card">
-    <Counter />
-  </div>
+  <h1>CSV Diff</h1>
+    <FileSelect />
 </main>
 
 <style>
