@@ -9,13 +9,23 @@
         }
         onUpdated(files);
     }
+
+    function makeHandler(i: number) {
+        return (e: Event) => {
+            e.preventDefault();
+            e.stopPropagation();
+            files.splice(i, 1);
+            onUpdated(files);
+            return false;
+        }
+    }
 </script>
 
 <ul>
-    {#each files as file}
+    {#each files as file, i}
     <li>
         {file.name}
-        <a href="#" on:click={() => removeFile(file)}>remove</a>
+        <a href="#" on:click={makeHandler(i)}>remove</a>
     </li>
     {/each}
 </ul>

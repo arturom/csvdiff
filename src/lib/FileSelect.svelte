@@ -31,6 +31,9 @@
         if (list.length) {
             onFilesUpdated(files.concat(Array.from(list)));
         }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
     }
 
     function getSelectedCols() {
@@ -55,16 +58,17 @@
 <label for="file">Select at least two csv files you wish to compare</label>
 <input type="file" name="file" multiple on:change={handleFileSelection}>
 
-<FilesList files={files} onUpdated={onFilesUpdated}/>
-<ColumnSelector selectedColumns={selectedColumns}/>
-
-<div>
+{#if files.length !== 0}
+    <FilesList files={files} onUpdated={onFilesUpdated}/>
+    <ColumnSelector selectedColumns={selectedColumns}/>
     <button on:click={viewDiff}>View Diff</button>
-    <!--
-    <button on:click={saveFile}>Save Diff File</button>
-    -->
-</div>
-
-{#if loader}
-    <DiffTable loader={loader}/>
+    {#if loader}
+        <DiffTable loader={loader}/>
+    {/if}
 {/if}
+
+<style>
+    button {
+        margin: 1em 0 4em 0;
+    }
+</style>

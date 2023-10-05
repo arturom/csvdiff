@@ -3,7 +3,7 @@
     export let loader: Loader;
 </script>
 
-<table>
+<table role="grid">
     <thead>
         <tr>
             {#each loader.colEntries() as entry}
